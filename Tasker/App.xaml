@@ -1,0 +1,60 @@
+﻿<Application
+    x:Class="Tasker.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:converters="clr-namespace:Tasker.Converters">
+
+    <!--Application Resources-->
+    <Application.Resources>
+        <local:LocalizedStrings xmlns:local="clr-namespace:Tasker" x:Key="LocalizedStrings"/>
+       
+        <Style TargetType="TextBlock" x:Key="DefaultLabelStyle" BasedOn="{StaticResource PhoneTextSubtleStyle}">
+            <Setter Property="Margin" Value="12,0,12,-5"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}"/>
+        </Style>
+
+        <Style x:Key="TitleTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="LineHeight" Value="52" />
+            <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeExtraLarge}" />
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiLight}" />
+        </Style>
+
+        <Style x:Key="FormTextBox" TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0,0,13"/>
+        </Style>
+        <Style x:Key="FormDatePicker" TargetType="toolkit:DatePicker">
+            <Setter Property="Margin" Value="0,0,0,13"/>
+        </Style>
+        <Style x:Key="FormListPicker" TargetType="toolkit:ListPicker">
+            <Setter Property="Margin" Value="12,4,12,23"/>
+        </Style>
+
+        <converters:BoolToNotBoolConverter x:Key="boolToNotBoolConverter"/>
+        <converters:DateTimeTodayConverter x:Key="DateTimeTodayConverter"/>
+        <converters:NullToCollapsedConverter x:Key="NullToCollapsedConverter"/>
+        <converters:StatusToNameConverter x:Key="StatusToNameConverter"/>
+        <converters:PriorityToNameConverter x:Key="PriorityToNameConverter"/>
+        <converters:PriorityToImageConverter x:Key="PriorityToImageConverter"/>
+        <converters:DateTimeEstimateConverter x:Key="DateTimeEstimateConverter"/>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:NormalPriorityToCollapsedConverter x:Key="NormalPriorityToCollapsedConverter"/>
+        <converters:DefaultDueDateToNameConverter x:Key="DefaultDueDateToNameConverter"/>
+        <converters:BlobToImageConverter x:Key="BlobToImageConverter"/>
+        <converters:DateTimeMonthDayConverter x:Key="DateTimeMonthDayConverter" />
+        <converters:UpperCaseConverter x:Key="UpperCaseConverter" />
+
+    </Application.Resources>
+
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService
+            Launching="Application_Launching" Closing="Application_Closing"
+            Activated="Application_Activated" Deactivated="Application_Deactivated"/>
+    </Application.ApplicationLifetimeObjects>
+
+</Application>
