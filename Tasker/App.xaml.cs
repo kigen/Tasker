@@ -6,6 +6,7 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Tasker.Models;
 using Tasker.Resources;
 
 namespace Tasker
@@ -17,6 +18,13 @@ namespace Tasker
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
+
+
+        /// Database Connection String;
+        public static string connection = "Data Source=isostore:/Sample.sdf";
+
+
+
 
         /// <summary>
         /// Constructor for the Application object.
@@ -54,6 +62,60 @@ namespace Tasker
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
+
+
+            //Initialize Database:-> Data Source=isostore:/Sample.sdf
+            Db db = new Db(connection);
+            Database = db;
+            //db.DeleteDatabase();
+            if (db.DatabaseExists() == false)
+            {
+                
+                //Create the database                    
+                db.CreateDatabase();
+                //Populate some sample data;
+                PopulateData();
+            }
+            Database = db;
+        }
+
+        //Global Variables
+        public Task SelectedTask { get; set;  }
+        public Db Database { get; set; }
+
+        public void PopulateData()
+        {
+            //Location data: 
+            Location location = new Location()
+            {
+                Latitude = 0.1,
+                Longitude = 35.0,
+                Name = "Home"
+            };
+            Location location2 = new Location()
+            {
+                Latitude = 0.4,
+                Longitude = 35.6,
+                Name = "Work"
+            };
+
+            Database.Locations.InsertOnSubmit(location2);
+            //Task Data: 
+
+            Task  task  = new Task()
+            {
+                Description = "Buying stuff in the supermarket", 
+                Title = "Shopping", 
+                Due = DateTime.Now.AddHours(10), 
+                Priority = "Normal",
+                Status = "Pending", 
+                Reminder = true,
+                Location = "Work",
+                TaskCreated = DateTime.Now
+            };
+            Database.Tasks.InsertOnSubmit(task);
+
+            Database.SubmitChanges();
 
         }
 

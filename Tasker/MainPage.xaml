@@ -34,13 +34,13 @@
                     <TextBlock Text="{Binding Title}" Foreground="{StaticResource PhoneForegroundBrush}" TextWrapping="Wrap" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Margin="0,6,0,0" LineStackingStrategy="BlockLineHeight" LineHeight="31" />
 
                     <!-- project -->
-                    <TextBlock Text="{Binding Location.Name}" TextWrapping="Wrap" FontSize="{StaticResource PhoneFontSizeSmall}" Margin="0,6,0,18" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="{Binding Path=Projects.Color}" />
+                    <TextBlock Text="{Binding Location}" TextWrapping="Wrap" FontSize="{StaticResource PhoneFontSizeSmall}" Margin="0,6,0,18" FontWeight="Bold" TextOptions.TextHintingMode="Animated"  />
 
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
                     <!-- date -->
-                    <TextBlock Visibility="{Binding Path=DueDate, Converter={StaticResource NullToCollapsedConverter}}" Text="{Binding Path=DueDate, Converter={StaticResource DateTimeMonthDayConverter}}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Margin="0,4,0,-6" HorizontalAlignment="Right" TextAlignment="Right" />
+                    <TextBlock Visibility="{Binding Path=Due, Converter={StaticResource NullToCollapsedConverter}}" Text="{Binding Path=DueDate, Converter={StaticResource DateTimeMonthDayConverter}}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Margin="0,4,0,-6" HorizontalAlignment="Right" TextAlignment="Right" />
 
                     <!-- icons -->
                     <Canvas Margin="0,6,0,0" Visibility="Visible">
@@ -84,25 +84,25 @@
         <phone:Pivot HorizontalAlignment="Left" Height="748" Margin="0,10,0,0" Title="TASKER" VerticalAlignment="Top" Width="480" Grid.RowSpan="2">
             <phone:PivotItem CacheMode="{x:Null}" Header="Today">
                 <StackPanel>
-                    <phone:LongListSelector x:Name="lvTodayTasks" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="451" ItemTemplate="{StaticResource TaskTemplate}"/>
+                    <phone:LongListSelector x:Name="lvTodayTasks" ItemsSource="{Binding TodayTasks}" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="451" ItemTemplate="{StaticResource TaskTemplate}"/>
 
                 </StackPanel>
             </phone:PivotItem>
             <phone:PivotItem CacheMode="{x:Null}" Header="Urgent">
                 <StackPanel>
-                    <phone:LongListSelector x:Name="lvUrgentTasks" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="451" ItemTemplate="{StaticResource TaskTemplate}"/>
+                    <phone:LongListSelector x:Name="lvUrgentTasks" ItemsSource="{Binding UrgentTasks}" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="451" ItemTemplate="{StaticResource TaskTemplate}"/>
 
                 </StackPanel>
             </phone:PivotItem>
             <phone:PivotItem Header="Nearby" HorizontalAlignment="Left"  VerticalAlignment="Top">
                 <StackPanel>
-                            <phone:LongListSelector x:Name="lvNearbyTasks" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="451" ItemTemplate="{StaticResource TaskTemplate}"/>
+                            <phone:LongListSelector  x:Name="lvNearbyTasks" ItemsSource="{Binding NearbyTask}" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="451" ItemTemplate="{StaticResource TaskTemplate}"/>
 
                 </StackPanel>
             </phone:PivotItem>
             <phone:PivotItem Header="All Tasks" HorizontalAlignment="Left"  VerticalAlignment="Top">
                 <StackPanel>
-                    <phone:LongListSelector x:Name="lvAllTasks" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="451" ItemTemplate="{StaticResource TaskTemplate}"/>
+                    <phone:LongListSelector x:Name="lvAllTasks" ItemsSource="{Binding AllTasks}" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="451" ItemTemplate="{StaticResource TaskTemplate}"/>
 
                 </StackPanel>
             </phone:PivotItem>
