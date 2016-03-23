@@ -67,7 +67,9 @@ namespace Tasker
             //Initialize Database:-> Data Source=isostore:/Sample.sdf
             Db db = new Db(connection);
             Database = db;
+          
             //db.DeleteDatabase();
+
             if (db.DatabaseExists() == false)
             {
                 
@@ -76,7 +78,7 @@ namespace Tasker
                 //Populate some sample data;
                 PopulateData();
             }
-            Database = db;
+           
         }
 
         //Global Variables
@@ -92,6 +94,8 @@ namespace Tasker
                 Longitude = 35.0,
                 Name = "Home"
             };
+            Database.Locations.InsertOnSubmit(location);
+
             Location location2 = new Location()
             {
                 Latitude = 0.4,
@@ -113,6 +117,7 @@ namespace Tasker
                 Location = "Work",
                 TaskCreated = DateTime.Now
             };
+
             Database.Tasks.InsertOnSubmit(task);
 
             Database.SubmitChanges();

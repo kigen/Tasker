@@ -30,7 +30,7 @@ namespace Tasker
 
             //Initialize App.
             app = Application.Current as App;
-
+            
             //Set the current Class as the DataContext (viewModel) for our UI.
             //DataContext = this; ->Easy way to do Databinding. 
 
@@ -73,6 +73,7 @@ namespace Tasker
         {
             NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
         }
+        
         // When a task is tapped.. 
         private void TaskTapped(object sender, GestureEventArgs e)
         {
@@ -84,7 +85,7 @@ namespace Tasker
             app.SelectedTask = item;
 
             //Through URL Variables(this case pass the id of the task)
-            NavigationService.Navigate(new Uri("/TaskDetailPage.xaml?id="+item.Id,UriKind.Relative)); 
+            NavigationService.Navigate(new Uri("/TaskDetailPage.xaml?id="+item.Id,UriKind.Relative));
 
         }
 
@@ -97,8 +98,8 @@ namespace Tasker
             get
             {
                 var tasks = from t in app.Database.Tasks
-                    where t.Due.Date == DateTime.Now.Date 
-                    select t;
+                            where t.Due.Date == DateTime.Now.Date 
+                            select t;
 
                 return tasks.ToList();
 
@@ -109,7 +110,8 @@ namespace Tasker
         {
             get
             {
-                var tasks= app.Database.Tasks.ToList();
+                var tasks = from t in app.Database.Tasks
+                            select t;
                 return new ObservableCollection<Task>(tasks);
             }
         }

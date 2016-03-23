@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{e2882466-7b35-4f63-af2a-29c45622a04b}" Title="Tasker" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Tasker author" Description="Sample description" SDOptOut="false" BackUpOptOut="false" Publisher="Tasker" PublisherID="{d811a481-d4e2-4f00-9841-ff5eaa18affa}">
+  <App xmlns="" ProductID="{e2882466-7b35-4f63-af2a-29c45622a04b}" Title="Tasker" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Tasker author" Description="Sample description" SDOptOut="false" BackUpOptOut="false" Publisher="CN=seth" PublisherID="{d811a481-d4e2-4f00-9841-ff5eaa18affa}">
     <IconPath IsRelative="true" IsResource="false">Assets\Background.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

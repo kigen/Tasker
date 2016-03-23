@@ -21,9 +21,13 @@ namespace Tasker
         {
             NewTask = new Task();
             InitializeComponent();
+
+            //Data binding to the UI.
             DataContext = NewTask;
 
             _app = Application.Current as App;
+
+
             if (_app != null) lpLocation.ItemsSource = _app.Database.Locations.ToList();
 
             //Set the Priority Itemsource.
@@ -69,7 +73,6 @@ namespace Tasker
         {
             return _app.Database.Locations.ToList();
         } 
-
        
 
         //Selection of Dropdown fields handling.

@@ -36,6 +36,7 @@ namespace Tasker.Models
             set { this.SetProperty(ref this._id, value); }
         }
 
+
         [Column( Storage = "_title")]
         public string Title
         {
@@ -85,9 +86,12 @@ namespace Tasker.Models
              get { return _location; }
              set { this.SetProperty(ref this._location, value); }
          }
+        
+        [Column]
+        public bool Completed { get; set; }
 
 
-       // Property Change logic
+        // Property Change logic
        public event PropertyChangedEventHandler PropertyChanged;
        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] String propertyName = null)
        {

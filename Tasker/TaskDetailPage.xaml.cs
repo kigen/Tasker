@@ -21,6 +21,7 @@ namespace Tasker
             app = Application.Current as App;
 
             if (app != null) task = app.SelectedTask;
+           
             DataContext = task;
         }
 
