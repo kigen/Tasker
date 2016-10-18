@@ -31,12 +31,12 @@
 			       <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 
                     <!-- title -->
-                    <TextBlock Text="To buy Stuff" Style="{StaticResource TitleTextBlockStyle}" Margin="12,24,0,24" />
+                    <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" Margin="12,24,0,24" />
 
                     <Path Grid.ColumnSpan="3" Data="M0,0 L432,0" Width="432" Height="1" Stretch="None" Stroke="{StaticResource PhoneForegroundBrush}" StrokeThickness="1" StrokeDashArray="1 1" UseLayoutRounding="True" VerticalAlignment="Bottom"/>
 
 					  <!-- title -->
-                    <TextBlock Text="Buy Milk and Eggs"  Margin="12,24,0,24" />
+                    <TextBlock Text="{Binding Description}"  Margin="12,24,0,24" />
 
                     <Path Grid.ColumnSpan="3" Data="M0,0 L432,0" Width="432" Height="1" Stretch="None" Stroke="{StaticResource PhoneForegroundBrush}" StrokeThickness="1" StrokeDashArray="1 1" UseLayoutRounding="True" VerticalAlignment="Bottom"/>
 		                                    
@@ -54,20 +54,20 @@
 
                         <!-- status -->
                         <TextBlock Grid.Column="0" Grid.Row="0" Text="STATUS"  Style="{StaticResource DefaultLabelStyle}" Margin="0,24,0,-5" FontWeight="Bold" />
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Pending" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="21.333" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Status}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="21.333" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
 
                         <!-- priority -->
                         <TextBlock Grid.Column="1" Grid.Row="0" Text="PRIORITY"  Style="{StaticResource DefaultLabelStyle}" Margin="0,24,0,-5" FontWeight="Bold" />
-                        <TextBlock Grid.Column="1" Grid.Row="1" Text="Urgent" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="21.333" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Priority}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="21.333" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
 
                         <!-- due -->
                         <TextBlock Grid.Column="0" Grid.Row="2" Text="DUE"  Style="{StaticResource DefaultLabelStyle}" Margin="0,24,0,-5" FontWeight="Bold" />
-                        <TextBlock Grid.Column="0" Grid.Row="3" Text="3/17 11:00 AM" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="21.333" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="{Binding Due}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="21.333" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
 
 
                         <!-- location -->
                         <TextBlock Grid.Column="1" Grid.Row="2" Text="LOCATION"  Style="{StaticResource DefaultLabelStyle}" Margin="0,24,0,-5" FontWeight="Bold" />
-                        <TextBlock Grid.Column="1" Grid.Row="3" Text="Home" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="21.333" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+                        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Location}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="21.333" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
 
 
                     </Grid>
@@ -76,7 +76,7 @@
 
                     <!-- reminder -->
                     <TextBlock Text="REMINDER"  Style="{StaticResource DefaultLabelStyle}" Margin="12,0,0,-5" />
-                    <toolkit:ToggleSwitch x:Name="ReminderSwitch" Padding="0" SwitchForeground="{Binding Path=Task.Projects.Color}" Margin="12,-24" IsChecked="{Binding IsReminderSettingEnabled, Mode=TwoWay}" FontSize="24"/>
+                    <toolkit:ToggleSwitch x:Name="ReminderSwitch" Padding="0" SwitchForeground="{Binding Path=Task.Projects.Color}" Margin="12,-24" IsChecked="{Binding Reminder, Mode=TwoWay}" FontSize="24"/>
 
                     <!-- reminder options (hidden by default) -->
 
